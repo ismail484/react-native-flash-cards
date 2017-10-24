@@ -1,22 +1,19 @@
-# react-native-flash-cards
+# Project:react-native-flash-cards- [Mohamed Ismail]
 
-This project was bootstrapped with Create React Native App.
-
-
-
-# Project: readable-react-redux - [Mohamed Ismail]
+This project was bootstrapped with Create React Native App provided with Redux Staes and Forms .
 
 # Description
-  - A Web Contents and Comments Application using ReactJs, ReduxJs .
-  - Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
-  - This content and comment structure is common across a large number of websites and applications.
+  - A a mobile application (Android or iOS - or both)  using ReactNative, ReduxJs .
+  - The app will allow users to create different categories of flashcards called "decks", add flashcards to those decks, then take quizzes on those decks.
+  - This project encompasses the fundamental aspects of building a native application including handling infinite lists, routing, and user input
+  - Allow users to create a deck which can hold an unlimited number of cards.
+  - Allow users to add a card to a specific deck.
+  - The front of the card  display the question.
+  - The back of the card  display the answer.
+  - Users are be able to quiz themselves on a specific deck and receive a score once they're done.
+  - Users are receive a notification to remind themselves to study if they haven't already for that day.
   
-  ### First open [MyReadable](http://localhost:3000/) to discover, how app works .
-  -I use here `redux-model` to add posts .
-  - Simply , It acts as a single page application using ReactJs-Redux .
-  - the web app is a content and comment web app .
-  - the web app allows  Users to be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
-
+  
   #### How  components do interact with each other:
 - Directory structure of the redux web app is by  `capability`
 
