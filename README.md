@@ -1,166 +1,49 @@
-# react-native-flash-cards
+# Project:react-native-flash-cards- [Mohamed Ismail]
 
-This project was bootstrapped with Create React Native App.
+This project was bootstrapped with Create React Native App provided with Redux Staes and Forms .
 
-Below you'll find information about performing common tasks. The most recent version of this guide is available here.
+# Description
+  - A a mobile application (Android or iOS - or both)  using ReactNative, ReduxJs .
+  - The app will allow users to create different categories of flashcards called "decks", add flashcards to those decks, then take quizzes on those decks.
+  - This project encompasses the fundamental aspects of building a native application including handling infinite lists, routing, and user input
+  - Allow users to create a deck which can hold an unlimited number of cards.
+  - Allow users to add a card to a specific deck.
+  - The front of the card  display the question.
+  - The back of the card  display the answer.
+  - Users are be able to quiz themselves on a specific deck and receive a score once they're done.
+  - Users are receive a notification to remind themselves to study if they haven't already for that day.
+  
+  
+  #### How  components do interact with each other:
+- Directory structure of the redux web app is by  `capability`
 
-Table of Contents
+``` 
+   src/
+   - Components
+      - component1.js
+      - component2.js
+      - component3.js
+   - Actions
+      - action1.js
+      - action2.js
+   - Reducers
+      - reducer1.js
+   - Util
+   - Store
+```
 
-Updating to New Releases
-Available Scripts
-npm start
-npm test
-npm run ios
-npm run android
-npm run eject
-Writing and Running Tests
-Environment Variables
-Configuring Packager IP Address
-Adding Flow
-Customizing App Display Name and Icon
-Sharing and Deployment
-Publishing to Expo's React Native Community
-Building an Expo "standalone" app
-Ejecting from Create React Native App
-Build Dependencies (Xcode & Android Studio)
-Should I Use ExpoKit?
-Troubleshooting
-Networking
-iOS Simulator won't open
-QR Code does not scan
-Updating to New Releases
 
-You should only need to update the global installation of create-react-native-app very rarely, ideally never.
 
-Updating the react-native-scripts dependency of your app should be as simple as bumping the version number in package.json and reinstalling your project's dependencies.
+# Required Libraries and Dependencies
+   - Install React App : `npm install -g create-react-native-app`
+   - Create React App: `create-react-native-app AwesomeProject`
+`
 
-Upgrading to a new version of React Native requires updating the react-native, react, and expo package versions, and setting the correct sdkVersion in app.json. See the versioning guide for up-to-date information about package version compatibility.
-
-Available Scripts
-
-If Yarn was installed when the project was initialized, then dependencies will have been installed via Yarn, and you should probably use it to run these commands as well. Unlike dependency installation, command running syntax is identical for Yarn and NPM at the time of this writing.
-
-npm start
-
-Runs your app in development mode.
-
-Open it in the Expo app on your phone to view it. It will reload if you save edits to your files, and you will see build errors and logs in the terminal.
-
-Sometimes you may need to reset or clear the React Native packager's cache. To do so, you can pass the --reset-cache flag to the start script:
-
-npm start -- --reset-cache
-# or
-yarn start -- --reset-cache
-npm test
-
-Runs the jest test runner on your tests.
-
-npm run ios
-
-Like npm start, but also attempts to open your app in the iOS Simulator if you're on a Mac and have it installed.
-
-npm run android
-
-Like npm start, but also attempts to open your app on a connected Android device or emulator. Requires an installation of Android build tools (see React Native docs for detailed setup). We also recommend installing Genymotion as your Android emulator. Once you've finished setting up the native build environment, there are two options for making the right copy of adb available to Create React Native App:
-
-Using Android Studio's adb
-
-Make sure that you can run adb from your terminal.
-Open Genymotion and navigate to Settings -> ADB. Select “Use custom Android SDK tools” and update with your Android SDK directory.
-Using Genymotion's adb
-
-Find Genymotion’s copy of adb. On macOS for example, this is normally /Applications/Genymotion.app/Contents/MacOS/tools/.
-Add the Genymotion tools directory to your path (instructions for Mac, Linux, and Windows).
-Make sure that you can run adb from your terminal.
-npm run eject
-
-This will start the process of "ejecting" from Create React Native App's build scripts. You'll be asked a couple of questions about how you'd like to build your project.
-
-Warning: Running eject is a permanent action (aside from whatever version control system you use). An ejected app will require you to have an Xcode and/or Android Studio environment set up.
-
-Customizing App Display Name and Icon
-
-You can edit app.json to include configuration keys under the expo key.
-
-To change your app's display name, set the expo.name key in app.json to an appropriate string.
-
-To set an app icon, set the expo.icon key in app.json to be either a local path or a URL. It's recommended that you use a 512x512 png file with transparency.
-
-Writing and Running Tests
-
-This project is set up to use jest for tests. You can configure whatever testing strategy you like, but jest works out of the box. Create test files in directories called __tests__ or with the .test extension to have the files loaded by jest. See the the template project for an example test. The jest documentation is also a wonderful resource, as is the React Native testing tutorial.
-
-Environment Variables
-
-You can configure some of Create React Native App's behavior using environment variables.
-
-Configuring Packager IP Address
-
-When starting your project, you'll see something like this for your project URL:
-
-exp://192.168.0.2:19000
-The "manifest" at that URL tells the Expo app how to retrieve and load your app's JavaScript bundle, so even if you load it in the app via a URL like exp://localhost:19000, the Expo client app will still try to retrieve your app at the IP address that the start script provides.
-
-In some cases, this is less than ideal. This might be the case if you need to run your project inside of a virtual machine and you have to access the packager via a different IP address than the one which prints by default. In order to override the IP address or hostname that is detected by Create React Native App, you can specify your own hostname via the REACT_NATIVE_PACKAGER_HOSTNAME environment variable:
-
-Mac and Linux:
-
-REACT_NATIVE_PACKAGER_HOSTNAME='my-custom-ip-address-or-hostname' npm start
-Windows:
-
-set REACT_NATIVE_PACKAGER_HOSTNAME='my-custom-ip-address-or-hostname'
-npm start
-The above example would cause the development server to listen on exp://my-custom-ip-address-or-hostname:19000.
-
-Adding Flow
-
-Flow is a static type checker that helps you write code with fewer bugs. Check out this introduction to using static types in JavaScript if you are new to this concept.
-
-React Native works with Flow out of the box, as long as your Flow version matches the one used in the version of React Native.
-
-To add a local dependency to the correct Flow version to a Create React Native App project, follow these steps:
-
-Find the Flow [version] at the bottom of the included .flowconfig
-Run npm install --save-dev flow-bin@x.y.z (or yarn add --dev flow-bin@x.y.z), where x.y.z is the .flowconfig version number.
-Add "flow": "flow" to the scripts section of your package.json.
-Add // @flow to any files you want to type check (for example, to App.js).
-Now you can run npm run flow (or yarn flow) to check the files for type errors. You can optionally use a plugin for your IDE or editor for a better integrated experience.
-
-To learn more about Flow, check out its documentation.
-
-Sharing and Deployment
-
-Create React Native App does a lot of work to make app setup and development simple and straightforward, but it's very difficult to do the same for deploying to Apple's App Store or Google's Play Store without relying on a hosted service.
-
-Publishing to Expo's React Native Community
-
-Expo provides free hosting for the JS-only apps created by CRNA, allowing you to share your app through the Expo client app. This requires registration for an Expo account.
-
-Install the exp command-line tool, and run the publish command:
-
-$ npm i -g exp
-$ exp publish
-Building an Expo "standalone" app
-
-You can also use a service like Expo's standalone builds if you want to get an IPA/APK for distribution without having to build the native code yourself.
-
-Ejecting from Create React Native App
-
-If you want to build and deploy your app yourself, you'll need to eject from CRNA and use Xcode and Android Studio.
-
-This is usually as simple as running npm run eject in your project, which will walk you through the process. Make sure to install react-native-cli and follow the native code getting started guide for React Native.
-
-Should I Use ExpoKit?
-
-If you have made use of Expo APIs while working on your project, then those API calls will stop working if you eject to a regular React Native project. If you want to continue using those APIs, you can eject to "React Native + ExpoKit" which will still allow you to build your own native code and continue using the Expo APIs. See the ejecting guide for more details about this option.
-
-Troubleshooting
-
-Networking
-
-If you're unable to load your app on your phone due to a network timeout or a refused connection, a good first step is to verify that your phone and computer are on the same network and that they can reach each other. Create React Native App needs access to ports 19000 and 19001 so ensure that your network and firewall settings allow access from your device to your computer on both of these ports.
-
-Try opening a web browser on your phone and opening the URL that the packager script prints, replacing exp:// with http://. So, for example, if underneath the QR code in your terminal you see:
+# How to Run Project 
+   1.  Download all Project files
+   2.  Run `yarn install` [yarn](https://yarnpkg.com/en/) is preferred package for ReactJs or `npm install` to install all required dependancies &packages .
+   3.  Run `yarn start`  or `npm start` 
+   3.  Try opening a web browser on your phone and opening the URL that the packager script prints, replacing exp:// with http://. So, for example, if underneath the QR code in your terminal you see:
 
 exp://192.168.0.1:19000
 Try opening Safari or Chrome on your phone and loading
@@ -190,3 +73,29 @@ QR Code does not scan
 If you're not able to scan the QR code, make sure your phone's camera is focusing correctly, and also make sure that the contrast on the two colors in your terminal is high enough. For example, WebStorm's default themes may not have enough contrast for terminal QR codes to be scannable with the system barcode scanners that the Expo app uses.
 
 If this causes problems for you, you may want to try changing your terminal's color theme to have more contrast, or running Create React Native App from a different terminal. You can also manually enter the URL printed by the packager script in the Expo app's search bar to load it manually.
+
+ 
+# Miscellaneous
+  - ESlint rules are implemented .
+  - Implement on Amazon AWS Cloud or on Github pages 
+
+
+
+# Resources
+ 
+   1. [React Library](https://facebook.github.io/react/)
+   2. [Create React App](https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html)
+   3. [Create React updates-Webpack2](https://facebook.github.io/react/blog/2017/05/18/whats-new-in-create-react-app.html)
+   4. [React Form and select element](https://facebook.github.io/react/docs/forms.html)
+   5. [Short-circuit evaluation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Short-circuit_evaluation)
+   6. [React Router v4](https://tylermcginnis.com/build-your-own-react-router-v4/)
+   7. [Using a function in `setState` instead of an object](https://medium.com/@shopsifter/using-a-function-in-setstate-instead-of-an-object-1f5cfd6e55d1)
+   8. [Eslint Rules](http://eslint.org/)
+   9. [Heroku Cloud](https://devcenter.heroku.com/) .
+   10. [REST API Request](https://facebook.github.io/react-native/releases/0.33/docs/network.html).
+   11. [Redux bindActionCreators](http://redux.js.org/docs/api/bindActionCreators.html).
+   12. [Object Assign method](http://redux.js.org/docs/api/bindActionCreators.html).
+   13. [React This Props Children](https://learn.co/lessons/react-this-props-children).
+   14. [Redux Imuutable  State Invariant](https://github.com/leoasis/redux-immutable-state-invariant)
+#Run
+
