@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "sdkVersion": "20.0.0",
+    "name": "ModernFlashCards",
+    "description": "ModernFlashcards App developed by Ismail",
+    "version": "1.0",
+    "ios": {
+     "bundleIdentifier": "org.ismailmodernflashcards.exp"
+    },
+    "android": {
+     "package": "ismailmodernflashcards.exp"
+    }
+  }
+}
+
