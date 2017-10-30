@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import navHeader from '../utils/navHeader';
-import { silverColor,
-  neutreLightColor,
-  lightColor,
-  primaryColor,
-  negativeColor,
-  darkGreen } from '../utils/colors';
+import { silverColor } from '../utils/colors';
 
 class About extends Component {
   render() {
