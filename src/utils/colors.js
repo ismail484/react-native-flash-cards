@@ -6,6 +6,7 @@ const gray = '#666666';
 const silver = '#DBDBDB';
 const red = '#db3236';
 const green = '#008000';
+const GreeanBlau = '#808040';
 
 
 
@@ -19,4 +20,5 @@ export const neutreDarkColor = grayDark;
 export const neutreColor = gray;
 export const neutreLightColor = silver;
 export const darkGreen = green;
+export const darkgreeanBlau = GreeanBlau;
 

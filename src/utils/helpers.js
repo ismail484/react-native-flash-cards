@@ -17,7 +17,7 @@ export function DateToString(...args) {
   const todayUTC = new Date(
     Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
   );
-  return todayUTC.toISOString().split('T')[0];
+  return todayUTC.toISOString().split('T')[0]
 }
 
 export function isToday(yyyyMmDd) {
@@ -59,7 +59,7 @@ export function clearLocalNotification() {
 
 function createNotification() {
   return {
-    title: 'Hey!..your challenge is waiting for you with Flashcards!',
+    title: 'Hey!..your challenge is waiting now for you ,let/s start!',
     body: CONSTANTS.NOTIFICATION_BODY,
     ios: {
       sound: true
@@ -98,7 +98,7 @@ export async function setLocalNotification(
             JSON.stringify(true)
           );
         } else {
-          reject('We dont have the right to run push notifications');
+          reject('Sorry!..We dont have the right to run push notifications');
           reject(
             !Constants.isDevice &&
               'Please run this app on real devices instead of simulators'

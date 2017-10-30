@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Animated, View, StyleSheet } from 'react-native';
 import { Card, Text } from 'react-native-elements';
 import Button from './Button';
-import { primaryColor, lightColor } from '../utils/colors';
+import { primaryColor, lightColor, darkgreeanBlau } from '../utils/colors';
 
 
 class BaseCard extends Component {
@@ -11,7 +11,7 @@ class BaseCard extends Component {
     Animated.spring(this.animatedValue, {
       toValue: this.flipValue >= 90 ? 0 : 180,
       friction: 10,
-      tension: 10
+      tension: 15
     }).start();
   };
 
@@ -98,7 +98,7 @@ class BaseCard extends Component {
             style={{
               marginBottom: 20,
               color: lightColor,
-              backgroundColor: primaryColor
+              backgroundColor: darkgreeanBlau
             }}
           >
             {question.answer}
@@ -106,7 +106,7 @@ class BaseCard extends Component {
           <Button
             icon={{ name: 'emoji-flirt', type: 'entypo', color: primaryColor }}
             backgroundColor={lightColor}
-            color={primaryColor}
+            color={darkgreeanBlau}
             title="Great! you get it.."
             onPress={() => this.flip()}
           />
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     backfaceVisibility: 'hidden'
   },
   flipCardBack: {
-    backgroundColor: primaryColor
+    backgroundColor: darkgreeanBlau
   },
   flipText: {
     width: 90,
