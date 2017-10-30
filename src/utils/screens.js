@@ -1,4 +1,6 @@
 export const SCREENS = {
+  MAIN: 'Main',
+  ABOUT: 'About',
   HOME: 'Home',
   DECK_NEW: 'DeckNew',
   DECK_BOARD: 'DeckBoard',
