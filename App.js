@@ -37,6 +37,7 @@ const Tabs = TabNavigator({
 
 });
 
+// invoke Stack navigator
 const MainNavigator = StackNavigator({
   [SCREENS.Main]: {
     screen: Tabs,

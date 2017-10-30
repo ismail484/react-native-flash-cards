@@ -34,8 +34,8 @@ export default {
       deck: 'Ismail'
     },
     {
-      questionField: 'Where is Ismail from ?',
-      answer: 'Ismail is from Germany GER',
+      questionField: 'Where do Ismail come from ?',
+      answer: 'Ismail is comming from Germany GER',
       deck: 'Ismail'
     },
     {
