@@ -14,13 +14,13 @@ function StartQuizButton({ deck, questions, navigate, containerStyle, title }) {
       </Text>
       <TouchableOpacity>
         <Icon
+        raised
           type="ionicon"
           size={50}
           name={Platform.OS === 'ios' ? 'ios-play' : 'md-play'}
           color={primaryColor}
           containerStyle={styles.iconContainer}
-          onPress={() => navigate(SCREENS.QUIZ, { deck, questions })}
-          raised
+          onPress={() => navigate(SCREENS.QUIZ, { deck, questions })} 
         />
       </TouchableOpacity>
     </View>

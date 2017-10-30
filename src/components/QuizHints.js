@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Text } from 'react-native-elements';
 import SwipeRightIcon from './icons/SwipeRightIcon';
 import SwipeLeftIcon from './icons/SwipeLeftIcon';
-import { neutreLightColor, lightColor, primaryColor, negativeColor } from '../utils/colors';
+import { neutreLightColor, lightColor, primaryColor, negativeColor, darkGreen } from '../utils/colors';
 
 function QuizHints({ rightNote, leftNote }) {
   return (
@@ -16,7 +16,7 @@ function QuizHints({ rightNote, leftNote }) {
           { backgroundColor: leftNote.color }
         ]}
       >
-        <Text style={styles.notesText}>If incorrect,Please swipe left</Text>
+        <Text style={styles.notesText}>If incorrect Answer,Please swipe left</Text>
         <SwipeLeftIcon size={40} color={lightColor} />
       </View>
       <View
@@ -57,10 +57,11 @@ const styles = StyleSheet.create({
   }
 });
 
-function mapStateToProps({ swipe }) {
+function mapStateToProps(state) {
+  const { swipe } = state;
   return {
     rightNote: {
-      color: swipe.quiz && swipe.quiz.right ? primaryColor : neutreLightColor
+      color: swipe.quiz && swipe.quiz.right ? darkGreen : neutreLightColor
     },
     leftNote: {
       color: swipe.quiz && swipe.quiz.left ? negativeColor : neutreLightColor

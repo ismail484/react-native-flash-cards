@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import Swiper from 'react-native-xswiper';
-import Card from './Card';
+import BaseCard from './BaseCard';
 import QuizHints from './QuizHints';
 import { neutreLightColor } from '../utils/colors';
 import { SCREENS } from '../utils/screens';
 import { score as calculateScore } from '../utils/helpers';
 import { swipedLeft, swipedRight, swipedFinish, finishQuiz } from '../actions';
-import withNavOptions from '../utils/withNavOptions';
+import navHeader from '../utils/navHeader';
 
 class Quiz extends Component {
 
@@ -38,7 +38,7 @@ class Quiz extends Component {
     const { deck, questions } = this.props.navigation.state.params;
     const { correctAnswer, wrongAnswer } = this.state;
 
-    // 👇🏻 A middleware will intervent here to reset the push notification
+    // the middleware would  intervent  to reset the push notification
     this.props.finishQuiz({
       deck,
       score: calculateScore(correctAnswer, wrongAnswer)
@@ -56,6 +56,7 @@ class Quiz extends Component {
   }
 
   render() {
+    const{questions}=this.props.navigation.state.params
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -69,14 +70,14 @@ class Quiz extends Component {
         </View>
         <View style={styles.cardsContainer}>
           <Swiper
-            data={this.props.navigation.state.params.questions}
+            data={questions}
             onReleaseSwipe={() => this.props.swipedFinish()}
             onSwipeLeft={() => this.props.swipedLeft()}
             onSwipeRight={() => this.props.swipedRight()}
             onCompleteSwipeLeft={() => this.onCompleteSwipe('left')}
             onCompleteSwipeRight={() => this.onCompleteSwipe('right')}
             renderCard={(question, index) =>
-              <Card question={question} order={index + 1} />}
+              <BaseCard question={question} order={index + 1} />}
           />
         </View>
         <QuizHints />
@@ -105,6 +106,6 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withNavOptions({ headerTitle: 'Quiz' })(
+export default navHeader({ headerTitle: 'Quiz' })(
   connect(null, { swipedLeft, swipedRight, swipedFinish, finishQuiz })(Quiz)
 );

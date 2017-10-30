@@ -2,17 +2,12 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Text } from 'react-native-elements';
-import Button from './Button';
 import StartQuizButton from './StartQuizButton';
+import Button from './Button';
 import PropTypes from 'prop-types';
-import {
-  primaryColor,
-  lightColor,
-  silverColor,
-  neutreColor
-} from '../utils/colors';
+import { primaryColor, lightColor, silverColor, neutreColor } from '../utils/colors';
 import { SCREENS } from '../utils/screens';
-import withNavOptions from '../utils/withNavOptions';
+import navHeader from '../utils/navHeader';
 
 function DeckBoard(props) {
   const { deck } = props.navigation.state.params;
@@ -37,7 +32,7 @@ function DeckBoard(props) {
           icon={{
             name: 'credit-card-plus',
             type: 'material-community',
-            size: 40
+            size: 50
           }}
           title="Add New Card"
           backgroundColor={primaryColor}
@@ -53,13 +48,14 @@ function DeckBoard(props) {
           </Text>
         </View>}
       {props.questions.length > 0 &&
-        <View style={{ flex: 2 }}>
+        <View style={{ flex: 1 }}>
           <StartQuizButton deck={deck} navigate={props.navigation.navigate} />
         </View>}
       <View style={{ flex: 1 }}>
         <Button
-          icon={{ name: 'exchange', type: 'font-awesome', size: 32 }}
-          title="Switch Deck"
+          raised
+          icon={{ name: 'cached', size: 30 }}
+          title="Switch Your Favourite Deck"
           backgroundColor={neutreColor}
           containerViewStyle={styles.btnContainer}
           onPress={() => props.navigation.navigate(SCREENS.HOME)}
@@ -79,10 +75,10 @@ const styles = StyleSheet.create({
   notification: {
     color: silverColor,
     textAlign: 'center',
-    padding: 10
+    padding: 13
   },
   btnContainer: {
-    marginTop: 15
+    marginTop: 13
   }
 });
 
@@ -96,6 +92,6 @@ DeckBoard.PropTypes = {
   questions: PropTypes.array.isRequired,
 };
 
-export default withNavOptions(({ navigation }) => ({
+export default navHeader(({ navigation }) => ({
   headerTitle: navigation.state.params.deck
 }))(connect(mapStateToProps, null)(DeckBoard));

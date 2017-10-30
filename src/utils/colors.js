@@ -9,6 +9,8 @@ const green = '#008000';
 
 
 
+
+export const darkGrayColor = grayDark;
 export const primaryColor = blue;
 export const negativeColor = red;
 export const lightColor = white;
@@ -17,3 +19,4 @@ export const neutreDarkColor = grayDark;
 export const neutreColor = gray;
 export const neutreLightColor = silver;
 export const darkGreen = green;
+

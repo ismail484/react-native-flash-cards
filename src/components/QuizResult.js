@@ -6,15 +6,16 @@ import { Text } from 'react-native-elements';
 import AnimateNumber from 'react-native-animate-number';
 import Button from './Button';
 import StartQuizButton from './StartQuizButton';
-import {
+import { silverColor,
   neutreLightColor,
   lightColor,
   primaryColor,
-  negativeColor
-} from '../utils/colors';
+  negativeColor,
+  darkGreen } from '../utils/colors';
 import { SCREENS } from '../utils/screens';
 import { score as calculateScore } from '../utils/helpers';
-import withNavOptions from '../utils/withNavOptions';
+import navHeader from '../utils/navHeader';
+import { Ionicons } from '@expo/vector-icons';
 
 class QuizResult extends Component {
   static propTypes = {
@@ -39,7 +40,7 @@ class QuizResult extends Component {
     const { correctAnswer, worngAnswer, deck, navigation } = this.props;
     return (
       <View style={styles.container}>
-        <View style={{ flex: 2, justifyContent: 'center' }}>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
           <Text
             style={{
               color: correctAnswer < worngAnswer ? negativeColor : primaryColor
@@ -49,12 +50,31 @@ class QuizResult extends Component {
             <AnimateNumber value={this.score} formatter={this.scoreFormatter} />
           </Text>
         </View>
-        <StartQuizButton
-          title="Restart quiz"
-          deck={deck}
-          navigate={navigation.navigate}
-        />
-        <View style={{ flex: 2, justifyContent: 'flex-end' }}>
+
+        {this.score >= 50 &&
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <Ionicons
+            name={Platform.OS === 'ios' ? 'ios-happy-outline' : 'md-happy'}
+            size={100}
+          />
+          <Text style={styles.notification}>
+            Woow! Congratulations you passed your quiz on "{deck}" deck.
+          </Text>
+        </View>}
+
+        {this.score < 50 &&
+        <View style={{ flex: 1, alignItems: 'center' }}>
+          <Ionicons
+            name={Platform.OS === 'ios' ? 'ios-sad-outline' : 'md-sad'}
+            size={100}
+          />
+          <Text style={styles.notification}>
+            Oh! Sorry you need to repeat your quiz on "{deck}" deck.
+          </Text>
+          <StartQuizButton title="Restart quiz" deck={deck} navigate={navigation.navigate} />
+        </View>}
+
+        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
           <Button
             onPress={() => navigation.navigate(SCREENS.DECK_BOARD, { deck })}
             backgroundColor={lightColor}
@@ -80,7 +100,7 @@ class QuizResult extends Component {
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.headerText} h2>
-            Quiz Results on {this.props.deck}
+            Quiz Results for {this.props.deck}
           </Text>
         </View>
         <View style={styles.cardsContainer}>
@@ -111,7 +131,7 @@ function Notes({ correctAnswer, wrongAnswer }) {
         style={[
           styles.container,
           styles.note,
-          { backgroundColor: primaryColor }
+          { backgroundColor: darkGreen }
         ]}
       >
         <Text style={styles.notesText}>Correct Answer</Text>
@@ -168,6 +188,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: null,
     height: null
+  },
+  notification: {
+    color: silverColor,
+    textAlign: 'center',
+    padding: 13
   }
 });
 
@@ -182,6 +207,6 @@ function mapNavOptions({ navigation: { navigate, state: { params } } }) {
   };
 }
 
-export default withNavOptions(mapNavOptions)(
+export default navHeader(mapNavOptions)(
   connect(mapStateToProps)(QuizResult)
 );

@@ -8,19 +8,16 @@ import { addDeck } from '../actions';
 import { primaryColor } from '../utils/colors';
 import { SCREENS } from '../utils/screens';
 import { FORMS } from '../utils/forms';
-import withNavOptions from '../utils/withNavOptions';
+import navHeader from '../utils/navHeader';
 
 class DeckNew extends Component {
-  // componentDidMount() {
-  //   this.deck.focus();
-  // }
 
   onSubmit = values => {
     this.props.addDeck(values.deck);
-    this.props.navigation.navigate(SCREENS.HOME);
     this.props.dispatch(reset(FORMS.NEW_DECK));
     this.props.dispatch(untouch(FORMS.NEW_DECK));
     this.deck.clearText();
+    this.props.navigation.navigate(SCREENS.HOME);
   };
 
   renderInput = ({ input, meta: { touched, error }, ...rest }) => {
@@ -68,10 +65,10 @@ class DeckNew extends Component {
 
 function validate(values, ownProps) {
   const errors = {};
-  if (!values.deck) 
-    {errors.deck = 'Deck name cannot be empty,please enter a new one!'}
+  if (!values.deck)
+  { errors.deck = 'Deck name cannot be empty,please enter a new one!'; }
   else if (ownProps.decks.find(d => d === values.deck)) {
-    errors.deck = `"${values.deck}" already exists! Add another`;
+    errors.deck = `"${values.deck}" sorry!..it's already existed! try another one`;
   }
   return errors;
 }
@@ -87,7 +84,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default withNavOptions({ headerTitle: 'NEW DECK' })(
+export default navHeader({ headerTitle: 'CREATE NEW DECK' })(
   connect(mapStateToProps, mapDispatchToProps)(
     reduxForm({
       validate,

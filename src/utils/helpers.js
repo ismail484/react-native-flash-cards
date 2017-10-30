@@ -8,6 +8,23 @@ export function getDailyReminderValue() {
   };
 }
 
+/**
+ * Format date to YYYY-MM-DD , default : YYYY-MM-DD of today
+ * @return {String}             YYYY-MM-DD
+ */
+export function DateToString(...args) {
+  const date = new Date(...args);
+  const todayUTC = new Date(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+  );
+  return todayUTC.toISOString().split('T')[0];
+}
+
+export function isToday(yyyyMmDd) {
+  return yyyyMmDd === getDateString();
+}
+
+
 export function getWidth() {
   return Dimensions.get('window').width;
 }
@@ -20,23 +37,7 @@ export function score(correctAnswer, wrongAnswer) {
   const ratio = correctAnswer / (correctAnswer + wrongAnswer);
   return ratio * 100;
 }
-/**
- * Format date to YYYY-MM-DD , default : YYYY-MM-DD of today
- * @method getDateString
- * @param  {Array}      [args]  Date arguments with the samve overload.
- * @return {String}             YYYY-MM-DD
- */
-export function DateToString(...args) {
-  const date = new Date(...args);
-  const todayUTC = new Date(
-    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
-  );
-  return todayUTC.toISOString().split('T')[0];
-}
 
-export function isToday(yyyyMmDd) {
-  return yyyyMmDd === DateToString();
-}
 
 function getNotificationTime(date) {
   date.setHours(CONSTANTS.NOTIFICATION_HOUR);

@@ -6,7 +6,7 @@ function Button(props) {
   return (
     <ButtonElement
       Component={TouchableOpacity}
-      borderRadius={Platform.OS === 'ios' ? 13 : 3}
+      borderRadius={Platform.OS === 'ios' ? 17 : 7}
       {...props}
     />
   );

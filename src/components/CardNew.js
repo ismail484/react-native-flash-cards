@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { reduxForm, Field, reset, untouch } from 'redux-form';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 import Button from './Button';
-import withNavOptions from '../utils/withNavOptions';
+import navHeader from '../utils/navHeader';
 import { addQuestion } from '../actions';
 import { primaryColor } from '../utils/colors';
 import { SCREENS } from '../utils/screens';
@@ -48,6 +48,7 @@ class CardNew extends Component {
     );
   };
   render() {
+    const { deck } = this.props.navigation.state.params;
     return (
       <View style={{ flex: 1 }}>
         <Field
@@ -64,9 +65,9 @@ class CardNew extends Component {
         />
         <Button
           icon={{ name: 'plus', type: 'entypo' }}
-          title="Add Card"
+          title="Add New Card"
           backgroundColor={primaryColor}
-          containerViewStyle={{ marginTop: 15 }}
+          containerViewStyle={{ marginTop: 18 }}
           onPress={this.props.handleSubmit(this.handleSubmit)}
         />
       </View>
@@ -74,17 +75,26 @@ class CardNew extends Component {
   }
 }
 
+
 function validate(values) {
   const errors = {};
   if (!values.questionField) {
-    errors.questionField = 'This is required field!';
+    errors.questionField = 'please enter the question !';
   }
 
   if (!values.answer) {
-    errors.answer = 'This is required field!';
+    errors.answer = 'please enter the answer!';
   }
   return errors;
 }
+
+
+
+
+const mapDispatchToProps = (dispatch) => ({
+  addQuestion: (question) => dispatch(addQuestion(question)),
+});
+
 
 function mapNavOptions({ navigation }) {
   return {
@@ -92,13 +102,7 @@ function mapNavOptions({ navigation }) {
   };
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  addQuestion: (question) => dispatch(addQuestion(question)),
-});
-
-
-
-export default withNavOptions(mapNavOptions)(
+export default navHeader(mapNavOptions)(
   connect(null, mapDispatchToProps)(
     reduxForm({
       validate,
