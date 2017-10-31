@@ -17,8 +17,9 @@ class DeckNew extends Component {
     this.props.dispatch(reset(FORMS.NEW_DECK));
     this.props.dispatch(untouch(FORMS.NEW_DECK));
     this.deck.clearText();
-    this.props.navigation.navigate(SCREENS.HOME);
+    this.props.navigation.navigate(SCREENS.DECK_BOARD, { deck: values.deck });
   };
+
 
   renderInput = ({ input, meta: { touched, error }, ...rest }) => {
     const { label, ...inputProps } = rest;
